@@ -1,0 +1,27 @@
+apiVersion: apps/v1beta2
+kind: DaemonSet
+metadata:
+  name: fluentd-daemonet
+  labels:
+    app: fluentd-daemonset
+spec:
+  selector:
+    matchLabels:
+      name: fluentd-daemonset-pod
+  template:
+    metadata:
+      labels:
+        name: fluentd-daemonset-pod
+    spec:
+      nodeSelector:
+        daemonset/node: "true"
+      containers:
+        - name: fluentd-daemonset-container
+          image: gcr.io/google-containers/fluentd-elasticsearch:1.20
+          resources:
+            limits:
+              memory: 200Mi
+            requests:
+              cpu: 100m
+              memory: 200Mi
+
