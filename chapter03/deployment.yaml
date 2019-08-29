@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: photoview-deployment
+  name:  nginx-deployment
 
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: photo-view
+      app: nginx
 
   template:
     metadata:
       labels:
-        app: photo-view
+        app: nginx
         env: stage
     spec:
       containers:
