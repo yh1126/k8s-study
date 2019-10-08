@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  over-memory-pods
+  namespace: hideshi
+  labels:
+    name:  over-memory-pods
+spec:
+  replicas: 2
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      name: over-memory-pods
+  template:
+    metadata:
+      labels:
+        name:  over-memory-pods
+    spec:
+      containers:
+      - name: over-memory-pods
+        image: nginx:1.7.9
+        resources:
+          requests:
+            cpu: 50m
+            memory: 1Gi
+        imagePullPolicy: Always

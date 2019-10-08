@@ -1,0 +1,21 @@
+# execute command
+$ kubectl apply -f nginx-deployment.yaml
+
+
+# check event
+$ kubectl get event -w -n hideshi
+LAST SEEN                       FIRST SEEN                      COUNT     NAME                                                      KIND         SUBOBJECT                                TYPE
+2019-06-11 21:44:06 +0900 JST   2019-06-11 21:44:06 +0900 JST   1         nginx-hideshi.15a725846a8ecf02   Deployment             Normal    ScalingReplicaSet   deployment-controller   Scaled up replica set nginx-hideshi-6747d6787d to 2
+2019-06-11 21:44:06 +0900 JST   2019-06-11 21:44:06 +0900 JST   1         nginx-hideshi-6747d6787d.15a725846fd096ce   ReplicaSet             Normal    SuccessfulCreate   replicaset-controller   Created pod: nginx-hideshi-6747d6787d-54jcx
+2019-06-11 21:44:06 +0900 JST   2019-06-11 21:44:06 +0900 JST   1         nginx-hideshi-6747d6787d-54jcx.15a72584710c3ab9   Pod                 Normal    Scheduled   default-scheduler   Successfully assigned hideshi/nginx-hideshi-6747d6787d-54jcx to minikube
+2019-06-11 21:44:06 +0900 JST   2019-06-11 21:44:06 +0900 JST   1         nginx-hideshi-6747d6787d.15a725847651c950   ReplicaSet             Normal    SuccessfulCreate   replicaset-controller   Created pod: nginx-hideshi-6747d6787d-pzx5m
+2019-06-11 21:44:06 +0900 JST   2019-06-11 21:44:06 +0900 JST   1         nginx-hideshi-6747d6787d-pzx5m.15a7258477bd641a   Pod                 Normal    Scheduled   default-scheduler   Successfully assigned hideshi/nginx-hideshi-6747d6787d-pzx5m to minikube
+2019-06-11 21:44:08 +0900 JST   2019-06-11 21:44:08 +0900 JST   1         nginx-hideshi-6747d6787d-pzx5m.15a72584e5859a0b   Pod       spec.containers{nginx-hideshi}   Normal    Pulling   kubelet, minikube   pulling image "nginx:1.7.9"
+2019-06-11 21:44:08 +0900 JST   2019-06-11 21:44:08 +0900 JST   1         nginx-hideshi-6747d6787d-54jcx.15a72584eadbc6a3   Pod       spec.containers{nginx-hideshi}   Normal    Pulling   kubelet, minikube   pulling image "nginx:1.7.9"
+2019-06-11 21:44:11 +0900 JST   2019-06-11 21:44:11 +0900 JST   1         nginx-hideshi-6747d6787d-pzx5m.15a725858dec2b7d   Pod       spec.containers{nginx-hideshi}   Normal    Pulled    kubelet, minikube   Successfully pulled image "nginx:1.7.9"
+2019-06-11 21:44:11 +0900 JST   2019-06-11 21:44:11 +0900 JST   1         nginx-hideshi-6747d6787d-pzx5m.15a7258591c048b8   Pod       spec.containers{nginx-hideshi}   Normal    Created   kubelet, minikube   Created container
+2019-06-11 21:44:11 +0900 JST   2019-06-11 21:44:11 +0900 JST   1         nginx-hideshi-6747d6787d-pzx5m.15a72585a3902fc2   Pod       spec.containers{nginx-hideshi}   Normal    Started   kubelet, minikube   Started container
+2019-06-11 21:44:14 +0900 JST   2019-06-11 21:44:14 +0900 JST   1         nginx-hideshi-6747d6787d-54jcx.15a725863e28a926   Pod       spec.containers{nginx-hideshi}   Normal    Pulled    kubelet, minikube   Successfully pulled image "nginx:1.7.9"
+2019-06-11 21:44:14 +0900 JST   2019-06-11 21:44:14 +0900 JST   1         nginx-hideshi-6747d6787d-54jcx.15a7258648493bde   Pod       spec.containers{nginx-hideshi}   Normal    Created   kubelet, minikube   Created container
+2019-06-11 21:44:15 +0900 JST   2019-06-11 21:44:15 +0900 JST   1         nginx-hideshi-6747d6787d-54jcx.15a72586639e9e57   Pod       spec.containers{nginx-hideshi}   Normal    Started   kubelet, minikube   Started container
+

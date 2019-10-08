@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: web-allow-pod
+  namespace: hideshi
+spec:
+  # nginx-hideshi labelをもつpodに対して、Namespace defaultのpodsからアクセスできるようにする
+  podSelector:
+    matchLabels:
+      name: nginx-hideshi
+  ingress:
+    - from:
+      - namespaceSelector:
+          matchLabels:
+            purpose:
+              default

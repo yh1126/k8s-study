@@ -1,0 +1,13 @@
+apiVersion: policy/v1beta1
+kind: PodDisruptionBudget
+metadata:
+  name: nginx-deployment-pdb
+  namespace: hideshi
+spec:
+  maxUnavailable: "20%" #使えないpodの最大数
+  #minAvailable: "20%" #使える状態のpod際少数
+  #maxUnavailable: 1
+  #minAvailable: 1
+  selector:
+    matchLabels:
+      app: nginx-hideshi

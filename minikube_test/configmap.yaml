@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: hideshi-config
+  namespace: hideshi
+data:
+  key-name: "hideshi"
+  app-name: "nginx-hideshi-update"
