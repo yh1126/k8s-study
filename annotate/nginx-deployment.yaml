@@ -3,8 +3,8 @@ kind: Deployment #obj種類
 metadata:
   name: nginx-hideshi # deploymentの名前
   namespace: hideshi
-  annotations: 
-    key: value
+  annotations:
+    kubernetes.io/change-cause: Deployed Commit id is ${CIRCLE_SHA1}. CircleCI Build number is ${CIRCLE_BUILD_NUM}
   labels:
     app: nginx-hideshi #label kye-value形式なのでapp=nginxとなる
 spec:
@@ -25,13 +25,13 @@ spec:
         app: nginx-hideshi
     spec: #podのspec
       containers:
-      - name: nginx-hideshi #コンテナの名前
+      - name: annotate-nginx-hideshi #コンテナの名前
         resources:
           requests: #podに割り当てる最低限のリソース
             cpu: 50m
             memory: 128Mi
           limits: #podに割り当てられるリソースの上限
-            memory: 128Mi
+            memory: 256Mi
         image: nginx:1.7.9 #使用するイメージ
         # imagepullpolicyはイメージがAlwaysの場合必ずイメージを引っ張ってくる。手元にあるイメージを使わない
         imagePullPolicy: Always
